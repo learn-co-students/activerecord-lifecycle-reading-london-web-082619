@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   belongs_to :author
   validate :is_title_case 
 
+  before_validation :make_title_case
+  # when modifying model atribute use before_validation, some other action use before_save
+
   private
 
   def is_title_case
